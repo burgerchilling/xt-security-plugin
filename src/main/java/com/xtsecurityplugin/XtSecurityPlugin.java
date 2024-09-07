@@ -124,6 +124,7 @@ public class XtSecurityPlugin extends Plugin {
 //    public void onGameTick(GameTick tick) {
 //
 //
+//
 //    }
 
     private void performAction() {
