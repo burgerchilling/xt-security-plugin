@@ -73,15 +73,16 @@ public class XtSecurityPlugin extends Plugin {
 
     @Override
     public void startUp() {
-//        System.out.println("started!");
+//        System.out.println("started plugin!");
 
         executorService = Executors.newSingleThreadScheduledExecutor();
 
-        // Schedule the task to run every 10 seconds
+        // Schedule the task to run every 10 MINUTES
         executorService.scheduleAtFixedRate(this::performAction, 1, 10, TimeUnit.MINUTES);
 
         if (!BACKEND_URL.isEmpty() && !TokenSaved.isEmpty()) {
 
+            // SEND MESSAGE PLUGIN STARTED
             performActionSendMessage(TokenSaved, "plugin started");
         }
 
@@ -94,6 +95,7 @@ public class XtSecurityPlugin extends Plugin {
 
         if (!BACKEND_URL.isEmpty() && !TokenSaved.isEmpty()) {
 
+            // SEND MESSAGE PLUGIN STOPPED
             performActionSendMessage(TokenSaved, "plugin was stopped");
         }
 
@@ -109,6 +111,7 @@ public class XtSecurityPlugin extends Plugin {
 
             if (client.getGameState() != GameState.LOGGED_IN) {
 
+                // FETCH DATA
                 performActionLogin(config.accountid());
 
             }
@@ -202,7 +205,6 @@ public class XtSecurityPlugin extends Plugin {
                 {
 
 //                    System.out.println("POST Successful ");
-
                     String responseBody = response.body().string();
 
                     // Set the response data into the class variables
